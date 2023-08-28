@@ -26,4 +26,4 @@ jobs:
       repository_name: test-service-one
       image_commit_hash: ${{ inputs.commit_hash }}
     secrets:
-      deployments-repo-token: ${{ secrets.GITHUB_TOKEN }}  
+      deployments-repo-token: ${{ secrets.GITOPS_REPO_PAT }}  
