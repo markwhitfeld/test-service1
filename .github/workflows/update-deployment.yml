@@ -1,0 +1,29 @@
+name: Update Deployment
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: 'Commit hash that should be marked as the deployment head'
+        required: true
+        type: string
+
+jobs:
+  publish-deployment:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: markwhitfeld/test-deployments/.github/workflows/update-repository-ref.yml@main
+    with:
+      repository_name: test-service-one
+      commit_hash_input: ${{ input.commit_hash }}
+    secrets:
+      deployments-repo-token: ${{ secrets.GITHUB_TOKEN }}  
