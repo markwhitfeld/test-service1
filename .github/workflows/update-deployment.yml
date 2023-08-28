@@ -24,6 +24,6 @@ jobs:
     uses: markwhitfeld/test-deployments/.github/workflows/update-repository-ref.yml@main
     with:
       repository_name: test-service-one
-      commit_hash_input: ${{ input.commit_hash }}
+      commit_hash_input: ${{ inputs.commit_hash }}
     secrets:
       deployments-repo-token: ${{ secrets.GITHUB_TOKEN }}  
